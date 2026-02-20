@@ -24,7 +24,6 @@ export default function ChannelList({ selectedServer, selectedChannel, setSelect
                 const data = await res.json();
                 if (Array.isArray(data)) {
                     setChannels(data);
-                    setSelectedChannel(data[0] || null);
                 } else {
                     console.error("Channels response is not an array:", data);
                 }
@@ -32,7 +31,6 @@ export default function ChannelList({ selectedServer, selectedChannel, setSelect
                 console.error("Error fetching channels:", error);
             }
         };
-
         fetchChannels();
     }, [selectedServer]);
 
@@ -109,7 +107,6 @@ export default function ChannelList({ selectedServer, selectedChannel, setSelect
                     aria-label="Add channel"
                     onClick={() => { createChanel() }}
                 >
-
                     <div className="flex items-center gap-1 p-2 bg-[#393C43] rounded hover:bg-[#5865F2] transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M8 1a.5.5 0 0 1 .5.5v6h6a.5.5 0 0 1 0 1h-6v6a.5.5 0 0 1-1 0v-6h-6a.5.5 0 0 1 0-1h6v-6A.5.5 0 0 1 8 1z" />
@@ -122,7 +119,6 @@ export default function ChannelList({ selectedServer, selectedChannel, setSelect
                     aria-label="share channel"
                     onClick={() => { share() }}
                 >
-
                     <div className="flex items-center gap-1 p-2 bg-[#393C43] rounded hover:bg-[#5865F2] transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-share" viewBox="0 0 16 16">
                             <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3" />

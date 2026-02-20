@@ -20,19 +20,6 @@ export default function DashBoard() {
         setSelectedChannel(null);
         setShowChannels(true);
     };
-
-    const handleChannelSelect = (channel) => {
-        setSelectedChannel(channel);
-    };
-
-    const handleCloseChannels = () => {
-        setShowChannels(false);
-    };
-
-    const handleCloseChatRoom = () => {
-        setSelectedChannel(null);
-    };
-
     return (
         <div className="flex h-screen overflow-hidden">
             <div className={`${showChannels || selectedChannel ? 'hidden md:block' : 'block'}`}>
@@ -47,15 +34,15 @@ export default function DashBoard() {
                 <ChannelList
                     selectedServer={selectedServer}
                     selectedChannel={selectedChannel}
-                    setSelectedChannel={handleChannelSelect}
-                    onClose={handleCloseChannels}
+                    setSelectedChannel={(channel) => {setSelectedChannel(channel)}}
+                    onClose={() => setShowChannels(false)}
                 />
             </div>
             <div className={`${selectedChannel ? 'flex' : 'hidden'} md:flex flex-1`}>
                 <ChatRoom
                     selectedServer={selectedServer}
                     selectedChannel={selectedChannel}
-                    onClose={handleCloseChatRoom}
+                    onClose={() => setSelectedChannel(null)}
                 />
             </div>
         </div>

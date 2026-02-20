@@ -66,7 +66,7 @@ export default function ServerList({ selectedServer, setSelectedServer }) {
 
         try {
             const token = localStorage.getItem("accessToken") || sessionStorage.getItem("accessToken");
-            const res = await fetch(import.meta.env.VITE_API_URI + `/invites/${inviteCode}`, {
+            const res = await fetch(import.meta.env.VITE_API_URI + `/invites/join/${inviteCode}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export default function ServerList({ selectedServer, setSelectedServer }) {
                 return;
             }
             const data = await res.json();
-            setServerList((prev) => [...prev, data.server]);
+            setServerList((prev) => [...prev, data.data.server]);
         } catch (error) {
             console.error("Error joining server:", error);
         }

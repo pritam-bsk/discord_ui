@@ -15,7 +15,14 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        if(password.length < 6) {
+            setError("Password must be at least 6 characters long");
+            return;
+        }
+        if(username.length < 3) {
+            setError("Username must be at least 3 characters long");
+            return;
+        }
         try {
             const res = await fetch(import.meta.env.VITE_API_URI + "/auth/register", {
                 method: "POST",

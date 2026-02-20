@@ -5,11 +5,11 @@ function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    useEffect(() => {
-        if (localStorage.getItem('accessToken') || sessionStorage.getItem('accessToken')) {
-            window.location.href = '/';
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (localStorage.getItem('accessToken') || sessionStorage.getItem('accessToken')) {
+    //         window.location.href = '/';
+    //     }
+    // }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,6 +21,7 @@ function Login() {
                 },
                 body: JSON.stringify({
                     username: user,
+                    email: user,
                     password,
                 }),
             });
